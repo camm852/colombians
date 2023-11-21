@@ -12,7 +12,7 @@ interface ChartTwoState {
 }
 
 
-const ChartTwo: React.FC = ({crimes}: { crimes: TDictionaryCrimes }) => {
+const TipoCaso: React.FC = ({crimes}: { crimes: TDictionaryCrimes }) => {
   const byCountry : any[] = sortData(crimes)
   const [options, setOptions] = useState<ApexOptions>({
     colors: ['#3C50E0', '#80CAEE'],
@@ -90,11 +90,11 @@ const ChartTwo: React.FC = ({crimes}: { crimes: TDictionaryCrimes }) => {
   }, [])
 
   return (
-      <div className="col-span-12 rounded-sm border border-stroke bg-white p-7.5 shadow-default dark:border-strokedark dark:bg-boxdark xl:col-span-8">
+      <div className="col-span-12 rounded-sm border border-stroke bg-white p-7.5 shadow-default dark:border-strokedark dark:bg-boxdark xl:col-span-6">
         <div className="mb-4 justify-between gap-4 sm:flex">
           <div>
             <h4 className="text-xl font-semibold text-black dark:text-white">
-              Número de detenidos por País
+              Número de detenidos por Situación Jurídica
             </h4>
           </div>
         </div>
@@ -114,4 +114,4 @@ const ChartTwo: React.FC = ({crimes}: { crimes: TDictionaryCrimes }) => {
   );
 };
 
-export default ChartTwo;
+export default TipoCaso;

@@ -11,11 +11,14 @@ import TableOne from '../../components/TableOne.tsx';
 import useData from '../../hooks/useData.tsx';
 import { IDataContext } from '../../react-app-env';
 import {
+  countBySituation,
   countCountries,
-  countCrimes,
-  counterGender,
+  countCrimes, countDetainedByCountry,
+  counterGender, countGroupAges,
   getTopRecords,
 } from '../../utils/utils.tsx';
+import GenderChart from "../../components/GenderChart.tsx";
+import TipoCaso from "../../components/TipoCaso.tsx";
 
 const Dashboard = () => {
   const { data, loading, error } = useData() as IDataContext;
@@ -39,12 +42,12 @@ const Dashboard = () => {
       </div>
 
       <div className="mt-4 grid grid-cols-12 gap-4 md:mt-6 md:gap-6 2xl:mt-7.5 2xl:gap-7.5">
-        <ChartOne />
-        <ChartTwo />
+        <ChartTwo crimes={countDetainedByCountry(data)} />
+        <GenderChart groupAges={countGroupAges(data)}/>
         <ChartThree crimes={countCrimes(data)} />
-        <MapOne />
+        <TipoCaso crimes={countBySituation(data)}/>
         <div className="col-span-12 xl:col-span-8">
-          <TableOne />
+          <TableOne crimes={data} />
         </div>
         <ChatCard />
       </div>

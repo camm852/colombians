@@ -14,6 +14,8 @@
     "url": "https://tailadmin.com"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.8.4",
+    "@tanstack/react-query-devtools": "^5.8.4",
     "apexcharts": "^3.41.0",
     "headlessui": "^0.0.0",
     "jsvectormap": "^1.5.3",
@@ -28,6 +30,7 @@
     "sort-by": "^0.0.2"
   },
   "devDependencies": {
+    "@tanstack/eslint-plugin-query": "^5.8.4",
     "@types/react": "^18.2.17",
     "@types/react-dom": "^18.2.7",
     "@vitejs/plugin-react": "^4.0.3",

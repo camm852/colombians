@@ -7,7 +7,7 @@ interface ChartThreeState {
     series: number[];
 }
 
-const ChartThree = ({crimes}: { crimes: TDictionaryCrimes }) => {
+const GenderChart = ({groupAges}: { groupAges: TDictionaryCrimes }) => {
     const [state, setState] = useState<ChartThreeState>({
         series: [],
     });
@@ -30,11 +30,11 @@ const ChartThree = ({crimes}: { crimes: TDictionaryCrimes }) => {
             labels: [],
             legend: {
                 show: true,
-                position: 'left',
+                position: 'bottom',
             },
             plotOptions: {
                 pie: {
-                    customScale : 1.05,
+                    customScale : 1,
                     donut: {
                         size: '65%',
                         background: 'transparent',
@@ -61,7 +61,7 @@ const ChartThree = ({crimes}: { crimes: TDictionaryCrimes }) => {
                     breakpoint: 2600,
                     options: {
                         chart: {
-                            width: 580,
+                            width: 400,
                         },
                     },
                 },
@@ -77,17 +77,17 @@ const ChartThree = ({crimes}: { crimes: TDictionaryCrimes }) => {
         }
     )
     React.useEffect(() => {
-        setState(state => ({...state, series: Object.values(crimes)}))
-        setOptions((options: ApexOptions) => ({...options, labels: Object.keys(crimes)}))
+        setState(state => ({...state, series: Object.values(groupAges)}))
+        setOptions((options: ApexOptions) => ({...options, labels: Object.keys(groupAges)}))
     }, [])
 
     return (
         <div
-            className="col-span-12 rounded-sm border border-stroke bg-white px-5 pt-7.5 pb-5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:col-span-6">
+            className="col-span-4 rounded-sm border border-stroke bg-white px-5 pt-7.5 pb-5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:col-span-4">
             <div className="mb-3 justify-between gap-4 sm:flex">
                 <div>
                     <h5 className="text-xl font-semibold text-black dark:text-white">
-                        Delitos más comunes
+                        Grupos de edades de los detenidos
                     </h5>
                 </div>
             </div>
@@ -106,4 +106,4 @@ const ChartThree = ({crimes}: { crimes: TDictionaryCrimes }) => {
     );
 };
 
-export default ChartThree;
+export default GenderChart;

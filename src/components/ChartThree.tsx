@@ -1,6 +1,7 @@
 import { ApexOptions } from 'apexcharts';
 import React, { useState } from 'react';
 import ReactApexChart from 'react-apexcharts';
+import { TDictionaryCrimes } from '../react-app-env';
 
 interface ChartThreeState {
   series: number[];
@@ -48,7 +49,8 @@ const options: ApexOptions = {
   ],
 };
 
-const ChartThree: React.FC = () => {
+const ChartThree = ({ crimes }: { crimes: TDictionaryCrimes }) => {
+  console.log(crimes);
   const [state, setState] = useState<ChartThreeState>({
     series: [65, 34, 12, 56],
   });

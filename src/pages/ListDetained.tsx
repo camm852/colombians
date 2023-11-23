@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import useData from '../hooks/useData';
 import { IData, IDataContext } from '../react-app-env';
-
+import React from 'react';
 //MRT Imports
 import {
   MaterialReactTable,
@@ -18,6 +18,22 @@ import { AccountCircle } from '@mui/icons-material';
 //Mock Data
 
 const ListDetained = ({ data }: { data: IData[] }) => {
+  const [setOpenModal, Modal] = useModal();
+  const [rowData, setRowData] = React.useState<IData>({
+    fecha_publicaci_n: '',
+    pais_prisi_n: '',
+    consulado: '',
+    delito: '',
+    extraditado_y_o_repatriado: '',
+    situaci_n_jur_dica: '',
+    g_nero: '',
+    grupo_edad: '',
+    geocoded_column: '',
+    cantidad: 0,
+    latitud: 0,
+    longitud: 0,
+  });
+
   const columns = useMemo<MRT_ColumnDef<IData>[]>(
     () => [
       {
@@ -89,11 +105,12 @@ const ListDetained = ({ data }: { data: IData[] }) => {
       variant: 'outlined',
     },
 
-    renderRowActionMenuItems: ({ closeMenu }) => [
+    renderRowActionMenuItems: ({ closeMenu, row }) => [
       <MenuItem
         key={0}
         onClick={() => {
-          // View profile logic...
+          setOpenModal(true);
+          setRowData(row.original);
           closeMenu();
         }}
         sx={{ m: 0 }}
@@ -106,12 +123,21 @@ const ListDetained = ({ data }: { data: IData[] }) => {
     ],
   });
 
-  return <MaterialReactTable table={table} />;
+  return (
+    <>
+      <Modal>
+        <ViewDetained data={rowData} />
+      </Modal>
+      <MaterialReactTable table={table} />{' '}
+    </>
+  );
 };
 
 //Date Picker Imports - these should just be in your Context Provider
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import useModal from '../hooks/useModal';
+import ViewDetained from '../components/ViewDetained';
 
 const ListDetainedWithLocalizationProvider = () => {
   //App.tsx or AppProviders file

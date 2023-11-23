@@ -1,8 +1,8 @@
 import { ApexOptions } from 'apexcharts';
 import React, { useState } from 'react';
 import ReactApexChart from 'react-apexcharts';
-import {TDictionaryCrimes} from "../react-app-env";
-import {sortData} from "../utils/utils.tsx";
+import { IData, TDictionary } from '../react-app-env';
+import { sortData } from '../utils/utils.tsx';
 
 interface ChartTwoState {
   series: {
@@ -11,9 +11,8 @@ interface ChartTwoState {
   }[];
 }
 
-
-const TipoCaso: React.FC = ({crimes}: { crimes: TDictionaryCrimes }) => {
-  const byCountry : any[] = sortData(crimes)
+const LegalStatus = ({ crimes }: { crimes: TDictionary }) => {
+  const byCountry: TDictionary = sortData(crimes);
   const [options, setOptions] = useState<ApexOptions>({
     colors: ['#3C50E0', '#80CAEE'],
     chart: {
@@ -72,46 +71,53 @@ const TipoCaso: React.FC = ({crimes}: { crimes: TDictionaryCrimes }) => {
     fill: {
       opacity: 1,
     },
-  })
+  });
   const [state, setState] = useState<ChartTwoState>({
-    series: [
-    ],
+    series: [],
   });
 
-
   React.useEffect(() => {
-    setState(state => ({...state, series: [{
-        name : 'Número de detenidos',
-        data : Object.values(byCountry).slice(0,15)
-      }]}))
-    setOptions((options: ApexOptions) => ({...options, xaxis: {
-        categories :  Object.keys(byCountry).slice(0,30)
-      }}))
-  }, [])
+    setState((state) => ({
+      ...state,
+      series: [
+        {
+          name: 'Número de detenidos',
+          data: Object.values(byCountry).slice(0, 15),
+        },
+      ],
+    }));
+    setOptions((options: ApexOptions) => ({
+      ...options,
+      xaxis: {
+        categories: Object.keys(byCountry).slice(0, 30),
+      },
+    }));
+  }, []);
 
   return (
-      <div className="col-span-12 rounded-sm border border-stroke bg-white p-7.5 shadow-default dark:border-strokedark dark:bg-boxdark xl:col-span-6">
-        <div className="mb-4 justify-between gap-4 sm:flex">
-          <div>
-            <h4 className="text-xl font-semibold text-black dark:text-white">
-              Número de detenidos por Situación Jurídica
-            </h4>
-          </div>
-        </div>
-
+    <div className="border border-stroke bg-white p-7.5 shadow-default dark:border-strokedark dark:bg-boxdark xl:col-span-6">
+      <div className="mb-4 justify-between gap-4 sm:flex">
         <div>
-          <div id="chartTwo" className="-ml-5 -mb-9">
-            {options.xaxis?.categories &&           <ReactApexChart
-                options={options}
-                series={state.series}
-                type="bar"
-                height={350}
-            />}
-
-          </div>
+          <h4 className="text-xl font-semibold text-black dark:text-white">
+            Número de detenidos por Situación Jurídica
+          </h4>
         </div>
       </div>
+
+      <div>
+        <div id="chartTwo" className="-ml-5 -mb-9">
+          {options.xaxis?.categories && (
+            <ReactApexChart
+              options={options}
+              series={state.series}
+              type="bar"
+              height={350}
+            />
+          )}
+        </div>
+      </div>
+    </div>
   );
 };
 
-export default TipoCaso;
+export default LegalStatus;

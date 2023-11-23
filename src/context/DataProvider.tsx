@@ -1,5 +1,4 @@
 import React from 'react';
-import { IData } from '../react-app-env';
 import { useQuery } from '@tanstack/react-query';
 import { getAllData } from '../api/request';
 
@@ -23,7 +22,7 @@ const DataProvider = ({ children }: { children: JSX.Element }) => {
   //   },
   // ]);
 
-  const { data, isSuccess, isLoading, isError } = useQuery({
+  const { data, isLoading, isError } = useQuery({
     queryKey: ['AllData'],
     queryFn: getAllData,
   });

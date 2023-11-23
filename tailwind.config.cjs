@@ -1,4 +1,4 @@
-const defaultTheme = require('tailwindcss/defaultTheme')
+const defaultTheme = require('tailwindcss/defaultTheme');
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -25,6 +25,9 @@ module.exports = {
       graydark: '#333A48',
       'gray-2': '#F7F9FC',
       'gray-3': '#FAFAFA',
+      'gray-200': 'rgb(229 231 235)',
+      'gray-100': 'rgb(243 244 246)',
+      'gray-600': 'rgb(75 85 99)',
       whiten: '#F1F5F9',
       whiter: '#F5F7FD',
       boxdark: '#24303F',
@@ -44,6 +47,10 @@ module.exports = {
       success: '#219653',
       danger: '#D34053',
       warning: '#FFA70B',
+      'blue-100': 'rgb(219 234 254)',
+      'blue-200': 'rgb(191 219 254)',
+      'blue-300': 'rgb(147 197 253)',
+      'blue-600': 'rgb(37 99 235)',
     },
     screens: {
       '2xsm': '375px',
@@ -215,6 +222,9 @@ module.exports = {
       borderWidth: {
         6: '6px',
       },
+      borderColor: {
+        ...defaultTheme.borderColor,
+      },
       boxShadow: {
         default: '0px 8px 13px -3px rgba(0, 0, 0, 0.07)',
         card: '0px 1px 3px rgba(0, 0, 0, 0.12)',
@@ -251,4 +261,4 @@ module.exports = {
     },
   },
   plugins: [],
-}
+};

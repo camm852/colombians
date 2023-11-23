@@ -1,3 +1,5 @@
+import React from 'react';
+import { TDictionary } from './react-app-env.d';
 declare module '*.png';
 declare module '*.svg';
 declare module '*.jpeg';
@@ -20,10 +22,27 @@ export interface IData {
 
 export interface IDataContext {
   data: IData[];
-  loading: boolean;
-  error: boolean;
+  status: string;
+  error: Error;
+  setData: React.Dispatch<React.SetStateAction<IData[]>>;
 }
 
 export type TDictionary = {
   [key: string]: number;
 };
+
+export type TIconProps = {
+  className?: string;
+};
+
+export interface IGraphicProps {
+  data: TDictionary;
+  title: string;
+  className?: string;
+}
+
+export interface IPieGraphicProps extends IGraphicProps {
+  legendPosition?: 'top' | 'bottom' | 'left' | 'right';
+  customScale?: number;
+  chartWidth: number;
+}

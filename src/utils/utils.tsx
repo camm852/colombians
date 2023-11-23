@@ -78,7 +78,6 @@ export function countBySituation(data: IData[]): TDictionary {
   const situationDictionary: TDictionary = {};
 
   data.forEach((item) => {
-    console.log(item,'sss');
     const situation = item.situaci_n_jur_dica;
 
     if (Object.keys(situationDictionary).includes(situation)) {
@@ -103,12 +102,12 @@ export function getTopRecords(data: IData[]): IData[] {
   return topRecords;
 }
 
-export function sortData(data, type = 'ascendent') : IData[] {
+export function sortData(data: TDictionary, type = 'ascendent'): TDictionary {
   var arrayDePares = Object.entries(data);
 
-  arrayDePares.sort(function(a, b) {
+  arrayDePares.sort(function (a, b) {
     return type === 'ascendent' ? b[1] - a[1] : a[1] - b[1];
   });
 
-  return Object.fromEntries(arrayDePares) as IData[];
+  return Object.fromEntries(arrayDePares);
 }

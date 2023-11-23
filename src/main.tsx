@@ -1,4 +1,3 @@
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
@@ -12,14 +11,12 @@ import { DataProvider } from './context/DataProvider';
 const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <React.StrictMode>
-    <Router>
-      <QueryClientProvider client={queryClient}>
-        <ReactQueryDevtools initialIsOpen={false} />
-        <DataProvider>
-          <App />
-        </DataProvider>
-      </QueryClientProvider>
-    </Router>
-  </React.StrictMode>,
+  <Router>
+    <QueryClientProvider client={queryClient}>
+      <ReactQueryDevtools initialIsOpen={false} />
+      <DataProvider>
+        <App />
+      </DataProvider>
+    </QueryClientProvider>
+  </Router>,
 );

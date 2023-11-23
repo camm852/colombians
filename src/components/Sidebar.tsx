@@ -58,17 +58,17 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
   return (
     <aside
       ref={sidebar}
-      className={`absolute left-0 top-0 z-10 flex h-screen w-72.5 flex-col overflow-y-hidden bg-black duration-300 ease-linear dark:bg-boxdark lg:static lg:translate-x-0 ${
+      className={`absolute left-0 top-0 z-10 flex h-screen w-67.5 flex-col overflow-y-hidden bg-black duration-300 ease-linear dark:bg-boxdark lg:static lg:translate-x-0 ${
         sidebarOpen ? 'translate-x-0' : '-translate-x-full'
       }`}
     >
       {/* <!-- SIDEBAR HEADER --> */}
       <div className="flex items-center justify-between gap-2 px-6 py-5.5 lg:py-6.5">
         <NavLink to="/">
-          <div className="flex flex-row items-center gap-4">
-            <img src={Logo} alt="Logo" className="w-14" />
-            <h2 className="text-white text-2xl font-bold">
-              Colombianos Detenidos En El Exterior 🇨🇴
+          <div className="flex flex-row items-center gap-4 w-full justify-center">
+            <img src={Logo} alt="Logo" className="w-12" />
+            <h2 className="text-white text-2xl font-bold text-center">
+              Detenidos En El Exterior
             </h2>
           </div>
         </NavLink>
@@ -113,7 +113,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                   pathname === '/' || pathname.includes('dashboard')
                 }
               >
-                {(handleClick, open) => {
+                {(_, open) => {
                   return (
                     <React.Fragment>
                       {/* <!-- Dropdown Menu Start --> */}
@@ -133,7 +133,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
               <li>
                 <NavLink
                   to="/"
-                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
+                  className={`group relative flex items-center gap-2.5 py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 rounded-lg ${
                     pathname.includes('calendar') &&
                     'bg-graydark dark:bg-meta-4'
                   }`}
@@ -170,8 +170,8 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
               {/* <!-- Menu Item Tables --> */}
               <li>
                 <NavLink
-                  to="/tables"
-                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
+                  to="/list-detained"
+                  className={`group relative flex items-center gap-2.5 py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 rounded-lg ${
                     pathname.includes('tables') && 'bg-graydark dark:bg-meta-4'
                   }`}
                 >
@@ -207,8 +207,8 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
               {/* <!-- Menu Item Profile --> */}
               <li>
                 <NavLink
-                  to="/profile"
-                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
+                  to="/map"
+                  className={`group relative flex items-center gap-2.5 py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 rounded-lg ${
                     pathname.includes('profile') && 'bg-graydark dark:bg-meta-4'
                   }`}
                 >

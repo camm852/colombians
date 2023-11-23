@@ -3,12 +3,13 @@ import React from 'react';
 import ReactApexChart from 'react-apexcharts';
 import { IGraphicProps, IPieGraphicProps } from '../react-app-env';
 
-const ChartThree = ({
+const PieChart = ({
   data,
   title,
   className,
   customScale,
   legendPosition,
+  chartWidth,
 }: IPieGraphicProps) => {
   const [state, setState] = React.useState<{ series: number[] }>({
     series: [],
@@ -133,11 +134,11 @@ const ChartThree = ({
     labels: [],
     legend: {
       show: true,
-      position: 'left',
+      position: legendPosition,
     },
     plotOptions: {
       pie: {
-        customScale: 1.05,
+        customScale: customScale,
         donut: {
           size: '65%',
           background: 'transparent',
@@ -165,7 +166,7 @@ const ChartThree = ({
         breakpoint: 2600,
         options: {
           chart: {
-            width: 580,
+            width: chartWidth,
           },
         },
       },
@@ -200,7 +201,7 @@ const ChartThree = ({
       </div>
 
       <div className="mb-2">
-        <div id="chartThree" className="">
+        <div id="PieGraphic" className="-ml-4">
           {state.series.length > 0 && (
             <ReactApexChart
               options={options}
@@ -214,4 +215,4 @@ const ChartThree = ({
   );
 };
 
-export default ChartThree;
+export default PieChart;

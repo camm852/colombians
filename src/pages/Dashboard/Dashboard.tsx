@@ -18,7 +18,7 @@ import WorldIcon from '../../icons/WorldIcon.tsx';
 import BarGraphic from '../../components/BarGraphic.tsx';
 
 const Dashboard = () => {
-  const { data, status, error, setData } = useData() as IDataContext;
+  const { data, status, error } = useData() as IDataContext;
 
   if (!data) {
     if (status === 'loading') {
@@ -28,7 +28,6 @@ const Dashboard = () => {
       return <div>{error.message}</div>;
     }
   } else {
-    setData(data);
     return (
       <>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-4 2xl:gap-7.5">
